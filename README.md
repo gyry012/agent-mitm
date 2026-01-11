@@ -143,7 +143,8 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 ![echo HTTP Payload](https://github.com/user-attachments/assets/b4befdae-a574-405d-927e-136279e85273)
 
 **비교 스크린샷:**
-![Prompt 변경 Tool-Call 변화](https://github.com/user-attachments/assets/b4281f92-558c-4533-bf50-fb0b15bac340)
+![Prompt 변경 Tool-Call 변화](https://github.com/user-attachments/assets/b4281f92-558c-4853-bf50-fb0b15bac340)
+
 
 **비교 내용:**
 
