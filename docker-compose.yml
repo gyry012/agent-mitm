@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  agent_a:
+    build:
+      context: .
+      dockerfile: agent_a/Dockerfile
+    container_name: agent_a
+    environment:
+      - PROMPT=${PROMPT:-Hello, this is a test message}
+    depends_on:
+      - agent_b
+    networks:
+      - agent_network
+    restart: unless-stopped
+
+  agent_b:
+    build:
+      context: .
+      dockerfile: agent_b/Dockerfile
+    container_name: agent_b
+    ports:
+      - "5001:5001"
+    depends_on:
+      - tool_server
+    networks:
+      - agent_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  tool_server:
+    build:
+      context: .
+      dockerfile: tool_server/Dockerfile
+    container_name: tool_server
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./data:/data
+    networks:
+      - agent_network
+    restart: unless-stopped
+
+networks:
+  agent_network:
+    driver: bridge
+
