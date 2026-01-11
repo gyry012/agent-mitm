@@ -1,29 +1,9 @@
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+*.pyc
+*.pyo
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Docker
-*.log
-
-# 기타
-*.tmp
-*.bak
 
