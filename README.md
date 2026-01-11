@@ -1,8 +1,8 @@
-# 멀티 에이전트 HTTP 통신 관찰 프로젝트
+# 멀티 에이전트 HTTP 통신 관찰
 
 ## 목표
 
-멀티 에이전트 구조에서 **에이전트 간 HTTP 평문 통신**을 관찰하고, 에이전트의 내부 처리 과정**(prompt / tool-call / response)**이 **네트워크 메시지 형태로 어떻게 외부에 드러나는지**를 확인합니다.
+멀티 에이전트 구조에서 **에이전트 간 HTTP 평문 통신**을 관찰하고, 에이전트의 내부 처리 과정**(prompt / tool-call / response)*이 **네트워크 메시지 형태로 어떻게 외부에 드러나는지**를 확인합니다.
 
 - Agent 내부 처리 흐름과 네트워크 메시지의 대응 관계 이해
 - HTTP payload 내 JSON 필드 의미 분석
@@ -53,7 +53,9 @@ agent-http/
 ### Prompt / Tool-Call / Response 구분
 
 **1. Prompt (Agent A → Agent B)**
+
 **2. Tool-Call (Agent B → Tool Server)**
+
 **3. Response (Tool Server → Agent B → Agent A)**
 
 

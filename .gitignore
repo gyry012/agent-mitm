@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 *.pyo
 
-# OS
+# OS    
 .DS_Store
 Thumbs.db
 
