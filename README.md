@@ -85,7 +85,7 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 ```
 
 **Wireshark HTTP 패킷 캡처:**
-![Wireshark HTTP 패킷 캡처](https://github.com/user/agent_mitm/assets/이미지ID/screenshot1.png)
+![Wireshark HTTP 패킷 캡처](https://github.com/user-attachments/assets/6cbcde7c-2702-4c23-b289-91854ff4e2ae)
 
 연두색 HTTP 패킷 4개:
 1. POST /process (포트 5001) A -> B
@@ -100,7 +100,7 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 ```
 
 **Wireshark HTTP 패킷 캡처:**
-![echo tool 테스트](https://github.com/user/agent_mitm/assets/이미지ID/screenshot2.png)
+![echo tool 테스트](https://github.com/user-attachments/assets/642d30f5-37ce-4ade-ae19-7f842605c161)
 
 
 ### 3. HTTP Payload 내 JSON 필드 분석 (read_file)
@@ -109,7 +109,7 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 
 **분석 내용:**
 
-![HTTP Payload JSON 분석](https://github.com/user/agent_mitm/assets/이미지ID/screenshot3.png)
+![HTTP Payload JSON 분석](https://github.com/user-attachments/assets/f4899fae-dba8-45e7-9e50-3607f911fa92)
 
 **Prompt 단계 (POST /process):**
 ```json
@@ -122,7 +122,7 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 
 **Tool-Call 단계 (POST /tool/read_file):**
 
-![Tool-Call JSON](https://github.com/user/agent_mitm/assets/이미지ID/screenshot4.png)
+![Tool-Call JSON](https://github.com/user-attachments/assets/15cd4c10-0eda-4e2c-9c65-79378ca5827d)
 
 ```json
 {
@@ -140,10 +140,10 @@ Invoke-WebRequest -Uri http://localhost:5001/process -Method POST -Body $body -C
 ### 4. Prompt 값 변경 후 Tool-Call 변화 (read_file vs echo)
 
 **echo tool HTTP Payload:**
-![echo HTTP Payload](https://github.com/user/agent_mitm/assets/이미지ID/screenshot5.png)
+![echo HTTP Payload](https://github.com/user-attachments/assets/b4befdae-a574-405d-927e-136279e85273)
 
 **비교 스크린샷:**
-![Prompt 변경 Tool-Call 변화](https://github.com/user/agent_mitm/assets/이미지ID/screenshot6.png)
+![Prompt 변경 Tool-Call 변화](https://github.com/user-attachments/assets/b4281f92-558c-4533-bf50-fb0b15bac340)
 
 **비교 내용:**
 
