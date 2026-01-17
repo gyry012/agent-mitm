@@ -47,9 +47,6 @@ Burp Suite를 활용한 MITM 시뮬레이션을 통해 멀티 에이전트 간 �
 
 **주요 용도**: 취약점 스캔, 침투 테스트, 트래픽 분석
 
-### 이번 실습 Proxy 동작 방식 
-Forward Proxy로 동작하며, 클라이언트 애플리케이션이 `HTTP_PROXY` 환경변수를 통해 Burp Suite를 프록시로 지정하면 모든 HTTP 요청/응답이 Burp Suite를 경유함!
-
 ### 핵심 기능
 
 #### Intercept
@@ -82,6 +79,9 @@ Tool Server
 **환경변수 기반 명시적 프록시 구성**
 ![프록시 설정](https://github.com/user-attachments/assets/2afd85d1-ad28-47a1-b2c6-27a608c41bcd)
 
+### 이번 실습 Proxy 동작 방식 
+Forward Proxy로 동작하며, 위의 이미지처럼 `HTTP_PROXY` 환경변수를 통해 Burp Suite를 프록시로 지정해줌으로써
+클라이언트 애플리케이션(agent_a, agent_b)의 모든 HTTP 요청/응답이 Burp Suite를 거쳐가도록 해준다.
 
 ---
 
