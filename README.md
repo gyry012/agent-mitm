@@ -80,7 +80,7 @@ Tool Server
 
 ### 프록시 설정
 **환경변수 기반 명시적 프록시 구성**
-![프록시 설정](이미지URL을여기에입력하세요)
+![프록시 설정](https://github.com/user-attachments/assets/2afd85d1-ad28-47a1-b2c6-27a608c41bcd)
 
 
 ---
@@ -88,8 +88,8 @@ Tool Server
 ## 4. 실습
 
 ### HTTP history를 통해 각 구간의 패킷 흐름 확인
-![HTTP History - a<->b](이미지URL을여기에입력하세요)
-![HTTP History - b<->tool](이미지URL을여기에입력하세요)
+![HTTP History - a↔b](https://github.com/user-attachments/assets/f16aaf49-df69-40e0-a970-0dfee62c8b73)
+![HTTP History - b↔tool](https://github.com/user-attachments/assets/17056858-3a27-41b1-94c5-0668f1748e09)
 
 #### 관찰 가능 구간
 1. **Agent A → Agent B**: `POST /process` (prompt 전달)
@@ -98,10 +98,10 @@ Tool Server
 ---
 ### repeater 기능을 이용하여 변조해보기 
 #### (1) prompt 변조
-![Prompt 변조](이미지URL을여기에입력하세요)
+![Prompt 변조](https://github.com/user-attachments/assets/3b00c1d9-5757-4be8-9222-4fb3004907cc)
 
 #### (2) tool-call 변조 (Response Poisoning)
-![Tool-Call 변조 - passwd.txt 읽기](이미지URL을여기에입력하세요)
+![Tool-Call 변조 - passwd.txt 읽기](https://github.com/user-attachments/assets/412f6305-f470-41aa-b546-12584d7bd2e3)
 
 
 
