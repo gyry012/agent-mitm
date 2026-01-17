@@ -4,6 +4,11 @@
 from flask import Flask, request, jsonify
 import requests
 import logging
+import os
+import urllib3
+
+# SSL 인증서 검증 비활성화 경고 숨기기 (Burp Suite 사용 시)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
 
@@ -28,10 +33,16 @@ def analyze_prompt_and_select_tool(prompt):
 
 def call_tool(tool_name, tool_params):
     # Tool Server에 tool 호출 요청
-    # 호스트 포트를 통해 호출하여 Wireshark로 캡처 가능하도록 함
-    import os
-    tool_server_host = os.environ.get('TOOL_SERVER_HOST', 'host.docker.internal')
-    tool_server_url = f"http://{tool_server_host}:5002/tool/{tool_name}"
+    
+    proxy_url = os.environ.get('HTTP_PROXY', '')
+    proxies = {'http': proxy_url, 'https': proxy_url} if proxy_url else None
+    
+    if proxy_url:
+        tool_server_url = f"http://host.docker.internal:5002/tool/{tool_name}"
+        logger.info("[PROXY] 프록시 사용: %s", proxy_url)
+    else:
+        tool_server_host = os.environ.get('TOOL_SERVER_HOST', 'tool_server')
+        tool_server_url = f"http://{tool_server_host}:5002/tool/{tool_name}"
 
     payload = {
         "tool_name": tool_name,
@@ -44,6 +55,8 @@ def call_tool(tool_name, tool_params):
         response = requests.post(
             tool_server_url,
             json=payload,
+            proxies=proxies,
+            verify=False,  # Burp Suite 인증서 검증 비활성화
             timeout=10
         )
         

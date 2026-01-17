@@ -5,6 +5,10 @@ import requests
 import logging
 import time
 import os
+import urllib3
+
+# SSL 인증서 검증 비활성화 경고 숨기기 (Burp Suite 사용 시)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -15,7 +19,15 @@ logger = logging.getLogger(__name__)
 
 def send_prompt_to_agent_b(prompt, max_retries=5, retry_delay=3):
     # Agent B에게 prompt를 HTTP POST로 전송 (재시도 로직 포함)
-    agent_b_url = "http://agent_b:5001/process"
+    
+    proxy_url = os.environ.get('HTTP_PROXY', '')
+    proxies = {'http': proxy_url, 'https': proxy_url} if proxy_url else None
+    
+    if proxy_url:
+        agent_b_url = "http://host.docker.internal:5001/process"
+        logger.info("[PROXY] 프록시 사용: %s", proxy_url)
+    else:
+        agent_b_url = "http://agent_b:5001/process"
 
     payload = {
         "prompt": prompt,
@@ -30,6 +42,8 @@ def send_prompt_to_agent_b(prompt, max_retries=5, retry_delay=3):
             response = requests.post(
                 agent_b_url,
                 json=payload,
+                proxies=proxies,
+                verify=False,  # Burp Suite 인증서 검증 비활성화
                 timeout=30
             )
 
