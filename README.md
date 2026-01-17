@@ -98,12 +98,18 @@ Tool Server
 ---
 ### repeater 기능을 이용하여 변조해보기 
 #### (1) prompt 변조
+repeater를 이용하여 request의 prompt를 변조해보자. (위의 이미지와 비교해봤을 때 timestamp 동일하므로 같은 패킷임을 알 수 있음)
 ![Prompt 변조](https://github.com/user-attachments/assets/3b00c1d9-5757-4be8-9222-4fb3004907cc)
+불러오는 tool을 보면 원래는 read_file 이었지만 prompt를 바꿈으로써 echo tool을 불러오는 걸 확인할 수 있다.
 
-#### (2) tool-call 변조 (Response Poisoning)
+#### (2) tool-call 변조
+read_file로 다른 파일을 읽도록 tool-call을 변조하기 위해 passwd.txt 파일을 새로 만들었다. 
+그런 다음 file_name을 바꿔주면!!
 ![Tool-Call 변조 - passwd.txt 읽기](https://github.com/user-attachments/assets/412f6305-f470-41aa-b546-12584d7bd2e3)
+원하는대로 바뀐 파일로 response가 바뀌는 것을 볼 수 있다!
 
-
+#### 끝으로
+시각적으로 변화가 보이니까 너무 재밌다. 다음주가 너무 기대된다 ㅎ
 
 
 ---
