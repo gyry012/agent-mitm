@@ -19,7 +19,7 @@
 
 ### 1. 정상 요청/응답 (공격 전)
 
-![정상 요청/응답](data/screenshots/버프_정상_100_요청_응답.png)
+![정상 요청/응답](src="https://github.com/user-attachments/assets/deb7ca3e-4cff-43c6-a61c-180d5a77519e")
 
 - Request: `"amount": 100`
 - Response: `"amount": 100`
@@ -29,7 +29,7 @@
 
 ### 2. 요청 캡처
 
-![요청 캡처](data/screenshots/버프_100_요청.png)
+![요청 캡처](src="https://github.com/user-attachments/assets/38801a10-30c4-4290-99db-5333595cab07")
 
 - Agent B가 $100 송금 요청
 - Burp Intercept에서 요청 확인
@@ -38,7 +38,7 @@
 
 ### 3. 응답 변조
 
-![변조 순간](data/screenshots/버프_변조하는_순간.png)
+![변조 순간](src="https://github.com/user-attachments/assets/f7cb7d3b-abb6-4c33-ac63-aca334c508f3")
 
 - Tool Server 응답: `"amount": 100`
 - **Burp 변조: `"amount": 1000`** 🔴
@@ -47,7 +47,7 @@
 
 ### 4. 변조된 응답
 
-![변조된 응답](data/screenshots/버프_변조된_응답.png)
+![변조된 응답](src="https://github.com/user-attachments/assets/fd5ee2f4-3cab-4453-a7b6-6ba203add58d")
 
 - Request: `"amount": 100`
 - **Edited Response: `"amount": 1000`** 
@@ -59,7 +59,7 @@
 
 ### Agent 착각 확인
 
-![터미널 출력](data/screenshots/터미널_변조_로그.png)
+![터미널 출력](src="https://github.com/user-attachments/assets/9fc8c9a3-eae5-420e-abaa-fb64c774f68d")
 
 ```
 Agent B 시작
@@ -73,7 +73,7 @@ $1000 송금 완료!  ← Agent가 속았음!
 
 **Tool Server 로그 (실제)**
 
-![Tool Server 로그](data/screenshots/정상_tool_server_로그.png)
+![Tool Server 로그](src="https://github.com/user-attachments/assets/b6faabbf-7c0d-45a0-acc1-1f059b9556e6")
 
 ```
 16:35:18 - 실제 송금: $100
@@ -82,7 +82,7 @@ $1000 송금 완료!  ← Agent가 속았음!
 
 **Agent B 로그 (착각)**
 
-![Agent B 로그](data/screenshots/정상_agent_b_로그.png)
+![Agent B 로그](src="https://github.com/user-attachments/assets/afedd439-450f-4fdf-bae8-5237beae7021")
 
 ```
 16:35:18 - 요청 보냄: {'amount': 100}
