@@ -1,4 +1,0 @@
-Hello, World!
-This is a test file for the multi-agent HTTP communication study.
-The file contains sample content that can be read by the read_file tool.
-

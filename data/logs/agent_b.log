@@ -1,0 +1,10 @@
+2026-02-09 16:35:18,669 - 요청 보냄: {'recipient': 'alice', 'amount': 100}
+2026-02-09 16:35:18,803 - 응답 받음: {'amount': 100, 'recipient': 'alice', 'sender_balance': 900, 'status': 'success'}
+2026-02-09 16:47:04,899 - 요청 보냄: {'recipient': 'alice', 'amount': 100}
+2026-02-09 16:47:38,908 - 응답 받음: {'amount': 100, 'recipient': 'alice', 'sender_balance': 900, 'status': 'success'}
+2026-02-09 16:48:25,290 - 요청 보냄: {'recipient': 'alice', 'amount': 100}
+2026-02-09 16:53:31,549 - 응답 받음: {'amount': 100, 'recipient': 'alice', 'sender_balance': 800, 'status': 'success'}
+2026-02-09 16:54:00,714 - 요청 보냄: {'recipient': 'alice', 'amount': 100}
+2026-02-09 16:54:06,760 - 응답 받음: {'amount': 100, 'recipient': 'alice', 'sender_balance': 700, 'status': 'success'}
+2026-02-09 16:55:00,694 - 요청 보냄: {'recipient': 'alice', 'amount': 100}
+2026-02-09 16:56:09,570 - 응답 받음: {'amount': 1000, 'recipient': 'alice', 'sender_balance': 600, 'status': 'success'}

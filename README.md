@@ -1,110 +1,113 @@
-# 멀티 에이전트 MITM 프록시 통신 관찰
+# Week 5: 공격 실험 보고서
 
-## 목표
-Burp Suite를 활용한 MITM 공격 시뮬레이션을 통해 멀티 에이전트 간 통신의 메시지 가로채기 및 변조 가능성 검증
-
----
-
-## 1. Proxy 개념
-
-### Forward Proxy
-클라이언트와 서버 사이에서 클라이언트를 대신하여 요청을 전달하는 중계 서버.
-
-**특징**:
-- 클라이언트가 프록시 서버를 명시적으로 설정
-- 클라이언트의 실제 IP 주소를 숨기고 프록시의 IP로 요청 전송
-- 요청/응답 캐싱, 접근 제어, 트래픽 모니터링 가능
-
-
-### Reverse Proxy
-클라이언트와 서버 사이에서 서버를 대신하여 요청을 수신하는 중계 서버.
-
-**특징**:
-- 실제 백엔드 서버의 존재를 클라이언트로부터 은닉
-- 로드 밸런싱, SSL/TLS 종료 지점, 보안 계층 제공
-- 서버 인프라 보호 및 성능 최적화
-
-
-### Transparent Proxy
-클라이언트가 프록시의 존재를 인지하지 못하도록 네트워크 계층에서 자동으로 트래픽을 우회시키는 프록시.
-
-**특징**:
-- 클라이언트 측 설정 불필요
-- 네트워크 게이트웨이나 라우터 수준에서 동작
-- ISP 레벨 트래픽 모니터링 및 제어
-
-### 본 실습의 프록시 구성
-**Forward Proxy (Burp Suite) + 명시적 프록시 설정**
-
-환경변수를 통해 모든 에이전트가 Burp Suite 프록시를 경유하도록 강제 설정. HTTP/HTTPS 트래픽이 프록시를 통과하며 중간에서 관찰 및 조작 가능.
+**목표:** Agent-side Consistency Check 부재 취약점 증명
 
 ---
 
-## 2. Burp Suite
+## 🎯 공격 시나리오
 
-### 개요
-웹 애플리케이션 보안 테스트를 위한 통합 플랫폼으로, HTTP/HTTPS 프로토콜 기반 통신의 가로채기, 분석, 변조 기능을 제공.
+사용자가 Alice에게 $100 송금 요청
 
-**주요 용도**: 취약점 스캔, 침투 테스트, 트래픽 분석
-
-### 이번 실습 Proxy 동작 방식 
-Forward Proxy로 동작하며, 클라이언트 애플리케이션이 `HTTP_PROXY` 환경변수를 통해 Burp Suite를 프록시로 지정하면 모든 HTTP 요청/응답이 Burp Suite를 경유.
-
-### 핵심 기능
-
-#### Intercept
-HTTP 요청 및 응답을 실시간으로 가로채어 전송 전 수정 가능.
-
-- **Intercept is on**: 모든 트래픽이 중단되며 사용자가 수동으로 전달 또는 수정
-- **Intercept is off**: 트래픽은 자동 전달되며 HTTP History에만 기록
-
-#### HTTP History
-프록시를 통과한 모든 HTTP 요청/응답의 전체 내역을 시간순으로 기록. 각 항목에 대해 요청 헤더/바디, 응답 헤더/바디, 타이밍 정보 등을 상세 확인 가능.
-
-#### Repeater
-기록된 HTTP 요청을 재전송하며 파라미터 수정 및 응답 관찰을 반복 수행. 특정 입력값에 대한 서버 동작 테스트 및 취약점 검증에 활용.
-
+1. Agent B → Tool Server: $100 요청
+2. Tool Server: $100 처리 (정상)
+3. **Burp가 응답을 $1000으로 변조**
+4. Agent B: $1000이라고 믿음 (착각)
 
 ---
 
-## 3. 시스템 아키텍처
+## 📸 공격 과정
 
-### 통신 구조
+### 1. 정상 요청/응답 (공격 전)
+
+![정상 요청/응답](data/screenshots/버프_정상_100_요청_응답.png)
+
+- Request: `"amount": 100`
+- Response: `"amount": 100`
+- 정상 동작 확인!
+
+---
+
+### 2. 요청 캡처
+
+![요청 캡처](data/screenshots/버프_100_요청.png)
+
+- Agent B가 $100 송금 요청
+- Burp Intercept에서 요청 확인
+
+---
+
+### 3. 응답 변조
+
+![변조 순간](data/screenshots/버프_변조하는_순간.png)
+
+- Tool Server 응답: `"amount": 100`
+- **Burp 변조: `"amount": 1000`** 🔴
+
+---
+
+### 4. 변조된 응답
+
+![변조된 응답](data/screenshots/버프_변조된_응답.png)
+
+- Request: `"amount": 100`
+- **Edited Response: `"amount": 1000`** 
+- Agent B에게 가짜 응답 전달
+
+---
+
+## 📊 실험 결과
+
+### Agent 착각 확인
+
+![터미널 출력](data/screenshots/터미널_변조_로그.png)
+
 ```
-Agent A (Client)
-    ↓ [Burp Suite Proxy :8080]
-Agent B (Server) 
-    ↓ [Burp Suite Proxy :8080]
-Tool Server
+Agent B 시작
+Burp 프록시 사용 중 (127.0.0.1:8080)
+$1000 송금 완료!  ← Agent가 속았음!
 ```
 
-### 프록시 설정
-**환경변수 기반 명시적 프록시 구성**
-![프록시 설정](https://github.com/user-attachments/assets/2afd85d1-ad28-47a1-b2c6-27a608c41bcd)
+---
 
+### 로그 비교
+
+**Tool Server 로그 (실제)**
+
+![Tool Server 로그](data/screenshots/정상_tool_server_로그.png)
+
+```
+16:35:18 - 실제 송금: $100
+응답: {'amount': 100, 'sender_balance': 900}
+```
+
+**Agent B 로그 (착각)**
+
+![Agent B 로그](data/screenshots/정상_agent_b_로그.png)
+
+```
+16:35:18 - 요청 보냄: {'amount': 100}
+16:35:18 - 응답 받음: {'amount': 100, 'sender_balance': 900}
+```
+
+*Note: 변조 공격 시 Agent B는 `amount: 1000`을 수신함*
 
 ---
 
-## 4. 실습
+## 분석
 
-### HTTP history를 통해 각 구간의 패킷 흐름 확인
-![HTTP History - a↔b](https://github.com/user-attachments/assets/f16aaf49-df69-40e0-a970-0dfee62c8b73)
-![HTTP History - b↔tool](https://github.com/user-attachments/assets/17056858-3a27-41b1-94c5-0668f1748e09)
-
-#### 관찰 가능 구간
-1. **Agent A → Agent B**: `POST /process` (prompt 전달)
-2. **Agent B → Tool Server**: `POST /tool/{tool_name}` (tool 실행 요청)
-
----
-### repeater 기능을 이용하여 변조해보기 
-#### (1) prompt 변조
-![Prompt 변조](https://github.com/user-attachments/assets/3b00c1d9-5757-4be8-9222-4fb3004907cc)
-
-#### (2) tool-call 변조 (Response Poisoning)
-![Tool-Call 변조 - passwd.txt 읽기](https://github.com/user-attachments/assets/412f6305-f470-41aa-b546-12584d7bd2e3)
-
-
-
+**영향:**
+- Agent 내부 상태: 잔액 -$1000 기록
+- 실제 잔액: -$100만 차감
+- **불일치: $900** → 연쇄적 오류 발생
 
 ---
 
+## 결론
+
+**공격 성공** 
+
+- Tool Server: $100 처리 
+- Burp: $1000으로 변조 
+- Agent B: 변조 탐지 실패
+
+→ Week 6에서 Intent Store 기반 검증 로직 구현 예정

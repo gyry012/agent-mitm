@@ -1,0 +1,31 @@
+2026-02-09 16:21:34,790 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-09 16:21:34,791 - [33mPress CTRL+C to quit[0m
+2026-02-09 16:22:01,540 - 127.0.0.1 - - [09/Feb/2026 16:22:01] "GET /api/balance HTTP/1.1" 200 -
+2026-02-09 16:34:31,922 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-09 16:34:31,923 - [33mPress CTRL+C to quit[0m
+2026-02-09 16:35:18,774 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 16:35:18,774 - Ω«¡¶ º€±›: $100
+2026-02-09 16:35:18,774 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 900}
+2026-02-09 16:35:18,777 - 127.0.0.1 - - [09/Feb/2026 16:35:18] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 16:45:44,828 - 127.0.0.1 - - [09/Feb/2026 16:45:44] "[33mPOST /api/reset HTTP/1.1[0m" 404 -
+2026-02-09 16:46:22,329 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-09 16:46:22,330 - [33mPress CTRL+C to quit[0m
+2026-02-09 16:47:38,904 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 16:47:38,904 - Ω«¡¶ º€±›: $100
+2026-02-09 16:47:38,904 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 900}
+2026-02-09 16:47:38,905 - 127.0.0.1 - - [09/Feb/2026 16:47:38] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 16:53:31,545 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 16:53:31,545 - Ω«¡¶ º€±›: $100
+2026-02-09 16:53:31,545 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 800}
+2026-02-09 16:53:31,546 - 127.0.0.1 - - [09/Feb/2026 16:53:31] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 16:54:06,756 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 16:54:06,757 - Ω«¡¶ º€±›: $100
+2026-02-09 16:54:06,757 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 700}
+2026-02-09 16:54:06,757 - 127.0.0.1 - - [09/Feb/2026 16:54:06] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 16:55:12,269 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 16:55:12,270 - Ω«¡¶ º€±›: $100
+2026-02-09 16:55:12,270 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 600}
+2026-02-09 16:55:12,270 - 127.0.0.1 - - [09/Feb/2026 16:55:12] "POST /api/transfer HTTP/1.1" 200 -
