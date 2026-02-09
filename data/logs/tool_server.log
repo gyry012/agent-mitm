@@ -29,3 +29,18 @@
 2026-02-09 16:55:12,270 - Ω«¡¶ º€±›: $100
 2026-02-09 16:55:12,270 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 600}
 2026-02-09 16:55:12,270 - 127.0.0.1 - - [09/Feb/2026 16:55:12] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 18:21:12,752 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-09 18:21:12,752 - [33mPress CTRL+C to quit[0m
+2026-02-09 18:22:00,341 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 18:22:00,341 - Ω«¡¶ º€±›: $100
+2026-02-09 18:22:00,341 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 9900}
+2026-02-09 18:22:00,341 - 127.0.0.1 - - [09/Feb/2026 18:22:00] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 18:29:48,080 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 18:29:48,081 - Ω«¡¶ º€±›: $100
+2026-02-09 18:29:48,081 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 9800}
+2026-02-09 18:29:48,081 - 127.0.0.1 - - [09/Feb/2026 18:29:48] "POST /api/transfer HTTP/1.1" 200 -
+2026-02-09 18:31:38,432 - ø‰√ª πﬁ¿Ω: aliceø°∞‘ $100
+2026-02-09 18:31:38,433 - Ω«¡¶ º€±›: $100
+2026-02-09 18:31:38,433 - ¿¿¥‰: {'status': 'success', 'recipient': 'alice', 'amount': 100, 'sender_balance': 9700}
+2026-02-09 18:31:38,433 - 127.0.0.1 - - [09/Feb/2026 18:31:38] "POST /api/transfer HTTP/1.1" 200 -

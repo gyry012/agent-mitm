@@ -1,0 +1,19 @@
+2026-02-09 18:21:28,702 - [req_9fa17af2] \U0001f512 Intent 저장
+2026-02-09 18:21:28,702 - [req_9fa17af2] Expected: recipient=alice, amount=100
+2026-02-09 18:21:28,702 - [req_9fa17af2] 요청 보냄: {'recipient': 'alice', 'amount': 100, 'request_id': 'req_9fa17af2'}
+2026-02-09 18:21:38,722 - [req_9fa17af2] 예외 발생: HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=10)
+2026-02-09 18:29:41,934 - [req_cd5f77e2] \U0001f512 Intent 저장
+2026-02-09 18:29:41,934 - [req_cd5f77e2] Expected: recipient=alice, amount=100
+2026-02-09 18:29:41,934 - [req_cd5f77e2] 요청 보냄: {'recipient': 'alice', 'amount': 100, 'request_id': 'req_cd5f77e2'}
+2026-02-09 18:29:51,949 - [req_cd5f77e2] 예외 발생: HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=10)
+2026-02-09 18:31:34,360 - [req_9051a41f] \U0001f512 Intent 저장
+2026-02-09 18:31:34,360 - [req_9051a41f] Expected: recipient=alice, amount=100
+2026-02-09 18:31:34,360 - [req_9051a41f] 요청 보냄: {'recipient': 'alice', 'amount': 100, 'request_id': 'req_9051a41f'}
+2026-02-09 18:31:42,623 - [req_9051a41f] 응답 받음: {'amount': 1000, 'recipient': 'alice', 'sender_balance': 9700, 'status': 'success'}
+2026-02-09 18:31:42,624 - RESPONSE TAMPERING DETECTED!
+Request ID: req_9051a41f
+Expected Amount: $100
+Received Amount: $1000
+Difference: $900
+Timestamp: 2026-02-09T18:31:42.624063
+2026-02-09 18:31:42,624 - [req_9051a41f] \u274c Amount 변조 탐지!

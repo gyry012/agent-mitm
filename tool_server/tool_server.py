@@ -17,9 +17,9 @@ logging.basicConfig(
 
 # 가짜 은행 계좌 (실제로는 DB 쓰지만 여기선 간단히)
 accounts = {
-    "user": 1000,   # 사용자: 1000달러
-    "alice": 500,   # Alice: 500달러
-    "bob": 300      # Bob: 300달러
+    "user": 10000,   # 사용자: 10000달러
+    "alice": 5000,   # Alice: 5000달러
+    "bob": 3000      # Bob: 3000달러
 }
 
 @app.route('/api/transfer', methods=['POST'])
