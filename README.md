@@ -19,7 +19,7 @@
 
 ### 1. 정상 요청/응답 (공격 전)
 
-![정상 요청/응답](data/screenshots/버프_정상_100_요청_응답.png)
+![정상 요청/응답](data/screenshots/버프 정상 100 요청 응답.png)
 
 - Request: `"amount": 100`
 - Response: `"amount": 100`
