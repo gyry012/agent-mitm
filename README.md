@@ -25,6 +25,23 @@
 - Response: `"amount": 100`
 - 정상 동작 확인!
 
+
+#### 정상 로그
+
+**(정상) Tool Server 로그**
+
+<img width="2400" height="515" alt="정상 tool_server 로그" src="https://github.com/user-attachments/assets/b6faabbf-7c0d-45a0-acc1-1f059b9556e6" />
+
+
+**(정상)Agent B 로그**
+
+<img width="1947" height="182" alt="정상 agent_b 로그" src="https://github.com/user-attachments/assets/afedd439-450f-4fdf-bae8-5237beae7021" />
+
+```
+16:35:18 - 요청 보냄: {'amount': 100}
+16:35:18 - 응답 받음: {'amount': 100, 'sender_balance': 900}
+```
+
 ---
 
 ### 2. 요청 캡처
@@ -69,36 +86,12 @@ $1000 송금 완료!  ← Agent가 속았음!
 
 ---
 
-### 로그 비교
-
-**Tool Server 로그 (실제)**
-
-<img width="2400" height="515" alt="정상 tool_server 로그" src="https://github.com/user-attachments/assets/b6faabbf-7c0d-45a0-acc1-1f059b9556e6" />
-
-```
-16:35:18 - 실제 송금: $100
-응답: {'amount': 100, 'sender_balance': 900}
-```
-
-**Agent B 로그 (착각)**
-
-<img width="1947" height="182" alt="정상 agent_b 로그" src="https://github.com/user-attachments/assets/afedd439-450f-4fdf-bae8-5237beae7021" />
-
-```
-16:35:18 - 요청 보냄: {'amount': 100}
-16:35:18 - 응답 받음: {'amount': 100, 'sender_balance': 900}
-```
-
-*Note: 변조 공격 시 Agent B는 `amount: 1000`을 수신함*
-
----
-
 ## 분석
 
 **영향:**
 - Agent 내부 상태: 잔액 -$1000 기록
 - 실제 잔액: -$100만 차감
-- **불일치: $900** → 연쇄적 오류 발생
+- **불일치: $900** → 오류 발생
 
 ---
 
